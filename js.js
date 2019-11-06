@@ -60,39 +60,6 @@ function display(){
 //---------------------Sorting-----------------------------------------//
 
 
-
-// function sort(){
-// 	console.log("on");
-// 	var ivalue= document.querySelector("#sort").value;
-// 	let sortOrder = itemsArr.sort(function(a,b){
-// 		if (ivalue === "az"){
-// 			console.log ('a to z');
-// 			if (a.name.toUpperCase > b.name.toUpperCase) return 1;
-// 			else if (b.name.toUpperCase>a.name.toUpperCase) return -1;
-// 			return 0;
-// 			}
-// 		else if (ivalue === "za"){
-// 			console.log ('z to a');
-// 			if (b.name > a.name) return 1;
-// 			else if (a.name>b.name) return -1;
-// 			return 0;
-// 			}
-// 		else if (ivalue === "low"){
-// 			console.log ('low');
-// 			return a.price-b.price;
-// 		}
-// 		else if (ivalue === "high"){
-// 			console.log ('low');
-// 			return b.price-a.price;
-// 		}
-// 		else{
-// 			return a.day-b.day;
-// 		}
-// 	});
-// 	itemsArr= sortOrder;
-// 	display();
-// 	}
-
 function sort(){
 	console.log("on");
 	var ivalue= document.querySelector("#sort").value;
@@ -102,7 +69,7 @@ function sort(){
 		 case "az":
 			console.log ('a to z');
 			if (a.name > b.name) return 1;
-			else if (b.name.toUpperCase>a.name.toUpperCase) return -1;
+			else if (b.name>a.name) return -1;
 			return 0;
 			break;
 
@@ -127,6 +94,7 @@ function sort(){
 			return a.day-b.day;
 		}
 	});
+
 	itemsArr= sortOrder;
 	display();
 	}
