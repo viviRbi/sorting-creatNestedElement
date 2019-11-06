@@ -1,0 +1,33 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+img{
+	height: auto;
+	width: 100%;
+	padding: 10px 2px;
+	display: inline-block;
+
+}
+
+.container{
+	margin: 50px 0;
+	position: relative;
+}
+
+#sort{
+	margin-bottom: 70px;
+}
+.price{
+	position: absolute;
+	right: 10px;
+}
+#items h2{
+	margin-bottom: 50px;
+	font-size: 20px;
+}
+.item{
+	display: inline-block;
+}
+
