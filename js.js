@@ -25,9 +25,6 @@ var itemsArr=[
 	{img:"img/008.jpg", name:"Food", price:"&#36;2", day: 8}
 ];
 
-function onetime(){
-	
-}
 
 function display(){
 	
