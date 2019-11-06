@@ -41,11 +41,13 @@ function display(){
 		priceItem.innerHTML= itemsArr[i].price;
 		symbol.innerHTML="&#36;";
 
-		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item");
 		itemImage.setAttribute('src', itemsArr[i].img);
-		priceItem.setAttribute('class', 'price');
+
+		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item transition");
+		itemImage.setAttribute('class', 'transition');
+		priceItem.setAttribute('class', 'price transition');
 		symbol.getAttribute('class');
-		symbol.setAttribute('class', 'money');
+		symbol.setAttribute('class', 'money transition');
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
 		itemHolder.appendChild(itemImage);
