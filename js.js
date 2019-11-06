@@ -27,17 +27,19 @@ function display(){
 		var itemHolder = document.createElement('div');
 		var itemImage = document.createElement("img");
 		var description = document.createElement('h2');
-		var priceItem = document.createElement('price');
+		var priceItem = document.createElement('span');
+
+		description.innerHTML= itemsArr[i].name;
+		priceItem.innerHTML= itemsArr[i].price;
 
 		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-sm-12 item");
 		itemImage.setAttribute('src', itemsArr[i].img);
-		description.innerHTML= itemsArr[i].name;
-		priceItem.setAttribute('src', itemsArr[i].price);
+		priceItem.setAttribute('class', 'price');
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
 		itemHolder.appendChild(itemImage);
 		itemHolder.appendChild(description);
-		itemHolder.appendChild(priceItem);
+		description.appendChild(priceItem);
 	}
 };
 display();
