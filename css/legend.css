@@ -34,4 +34,7 @@ img{
 .item{
 	display: inline-block;
 }
-
+.money{
+	display: relative;
+	
+}

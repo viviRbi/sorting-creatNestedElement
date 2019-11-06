@@ -15,14 +15,14 @@ function myFunction() {
 //---------------------Nested Element--------------------------//
 
 var itemsArr=[
-	{img:"img/001.jpg", name:"Bottle", price:"&#36;25", day: 1},
-	{img:"img/002.jpg", name:"Helmet", price:"&#36;50", day: 2},
-	{img:"img/003.jpg", name:"Frames", price:"&#36;4", day: 3},
-	{img:"img/004.jpg", name:"Milk", price:"&#36;3", day: 4},
-	{img:"img/005.jpg", name:"Watches", price:"&#36;100", day: 5},
-	{img:"img/006.jpg", name:"Vase", price:"&#36;70", day: 6},
-	{img:"img/007.jpg", name:"Box", price:"&#36;6", day: 7},
-	{img:"img/008.jpg", name:"Food", price:"&#36;2", day: 8}
+	{img:"img/001.jpg", name:"Bottle", price:25, day: 1},
+	{img:"img/002.jpg", name:"Helmet", price:50, day: 2},
+	{img:"img/003.jpg", name:"Frames", price:4, day: 3},
+	{img:"img/004.jpg", name:"Milk", price:3, day: 4},
+	{img:"img/005.jpg", name:"Watches", price:100, day: 5},
+	{img:"img/006.jpg", name:"Vase", price:70, day: 6},
+	{img:"img/007.jpg", name:"Box", price:6, day: 7},
+	{img:"img/008.jpg", name:"Food", price:2, day: 8}
 ];
 
 
@@ -35,44 +35,100 @@ function display(){
 		var itemImage = document.createElement("img");
 		var description = document.createElement('h2');
 		var priceItem = document.createElement('span');
+		var symbol = document.createElement('span');
 
 		description.innerHTML= itemsArr[i].name;
 		priceItem.innerHTML= itemsArr[i].price;
+		symbol.innerHTML="&#36;";
 
 		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item");
 		itemImage.setAttribute('src', itemsArr[i].img);
 		priceItem.setAttribute('class', 'price');
+		symbol.getAttribute('class');
+		symbol.setAttribute('class', 'money');
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
 		itemHolder.appendChild(itemImage);
 		itemHolder.appendChild(description);
 		description.appendChild(priceItem);
+		priceItem.appendChild(symbol);
+
 	}
 };
-display();
+
 
 //---------------------Sorting-----------------------------------------//
 
 
 
-function sortAZ(){
-	let displayed = true;
-	if (displayed){
-		displayed = !displayed;
-	}
-	let sortItemAZ = itemsArr.sort(function(a,b){
-		for (var i=0; i<itemsArr.length; i++){
+// function sort(){
+// 	console.log("on");
+// 	var ivalue= document.querySelector("#sort").value;
+// 	let sortOrder = itemsArr.sort(function(a,b){
+// 		if (ivalue === "az"){
+// 			console.log ('a to z');
+// 			if (a.name.toUpperCase > b.name.toUpperCase) return 1;
+// 			else if (b.name.toUpperCase>a.name.toUpperCase) return -1;
+// 			return 0;
+// 			}
+// 		else if (ivalue === "za"){
+// 			console.log ('z to a');
+// 			if (b.name > a.name) return 1;
+// 			else if (a.name>b.name) return -1;
+// 			return 0;
+// 			}
+// 		else if (ivalue === "low"){
+// 			console.log ('low');
+// 			return a.price-b.price;
+// 		}
+// 		else if (ivalue === "high"){
+// 			console.log ('low');
+// 			return b.price-a.price;
+// 		}
+// 		else{
+// 			return a.day-b.day;
+// 		}
+// 	});
+// 	itemsArr= sortOrder;
+// 	display();
+// 	}
 
+function sort(){
+	console.log("on");
+	var ivalue= document.querySelector("#sort").value;
+	let sortOrder = itemsArr.sort(function(a,b){
+		switch (ivalue){
+
+		 case "az":
+			console.log ('a to z');
+			if (a.name > b.name) return 1;
+			else if (b.name.toUpperCase>a.name.toUpperCase) return -1;
+			return 0;
+			break;
+
+		case "za":
+			console.log ('z to a');
+			if (b.name > a.name) return 1;
+			else if (a.name>b.name) return -1;
+			return 0;
+			break;
+
+		case "low":
+			console.log ('low');
+			return a.price-b.price;
+			break;
+
+		case "high":
+			console.log ('low');
+			return b.price-a.price;
+			break;
+
+		default:
+			return a.day-b.day;
 		}
-		if (a.name > b.name) return 1;
-		else if (b.name>a.name) return -1;
-		return 0;
 	});
-	itemsArr= sortItemAZ;
-	console.log (itemsArr);
+	itemsArr= sortOrder;
 	display();
-}
+	}
 
 
-
-document.querySelector('#az').addEventListener('click',sortAZ);
