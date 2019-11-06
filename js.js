@@ -1,15 +1,15 @@
-window.onscroll = function() {myFunction()};
+// window.onscroll = function() {myFunction()};
 
-var scroll=false;
+// var scroll=false;
 
-function myFunction() {
-  if (document.body.scrollTop > 50) {
-  	alert('display');}
-  	scroll=true;
-  if(scroll){
-  	alert = function(){};
-  }
- }
+// function myFunction() {
+//   if (document.body.scrollTop > 50) {
+//   	alert('display');}
+//   	scroll=true;
+//   if(scroll){
+//   	alert = function(){};
+//   }
+//  }
 
 
 //---------------------Nested Element--------------------------//
@@ -25,7 +25,7 @@ var itemsArr=[
 	{img:"img/008.jpg", name:"Food", price:2, day: 8}
 ];
 
-
+var startSorting = false;
 
 function display(){
 	
@@ -55,6 +55,7 @@ function display(){
 
 	}
 };
+display();
 
 
 //---------------------Sorting-----------------------------------------//
@@ -96,7 +97,14 @@ function sort(){
 	});
 
 	itemsArr= sortOrder;
+	deleteOldDisplay();
 	display();
 	}
 
-
+function deleteOldDisplay(){
+	for (var i=0; i<itemsArr.length; i++){
+		var parent = document.querySelector('#itemsDisplay');
+		var child = parent.querySelector('.item');
+		parent.removeChild(child);
+	}
+}
