@@ -29,9 +29,10 @@ var startSorting = false;
 
 function display(){
 	
-
 	for (var i=0; i<itemsArr.length; i++){
+
 		var itemHolder = document.createElement('div');
+		var itemImageHolder = document.createElement("div");
 		var itemImage = document.createElement("img");
 		var description = document.createElement('h2');
 		var priceItem = document.createElement('span');
@@ -43,20 +44,28 @@ function display(){
 
 		itemImage.setAttribute('src', itemsArr[i].img);
 
-		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item transition");
-		itemImage.setAttribute('class', 'transition');
-		priceItem.setAttribute('class', 'price transition');
-		symbol.getAttribute('class');
-		symbol.setAttribute('class', 'money transition');
+		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item hide");
+		priceItem.setAttribute('class', 'price');
+		symbol.setAttribute('class', 'money');
+		itemImageHolder.setAttribute('class', 'itemImageHolder');
+
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
-		itemHolder.appendChild(itemImage);
+		itemHolder.appendChild(itemImageHolder);
+		itemImageHolder.appendChild(itemImage);
 		itemHolder.appendChild(description);
 		description.appendChild(priceItem);
 		priceItem.appendChild(symbol);
 
+		
+		itemHolder.classList.remove("hide");
+		itemHolder.classList.add("appear");
+
+		}
 	}
-};
+
+
+
 display();
 
 
@@ -101,7 +110,10 @@ function sort(){
 	itemsArr= sortOrder;
 	deleteOldDisplay();
 	display();
-	}
+}
+
+
+//---------------------Remove-----------------------------------------//
 
 function deleteOldDisplay(){
 	for (var i=0; i<itemsArr.length; i++){

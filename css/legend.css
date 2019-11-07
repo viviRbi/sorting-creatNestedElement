@@ -3,14 +3,6 @@ html, body{
 	padding: 0;
 }
 
-img{
-	height: auto;
-	width: 100%;
-	padding: 10px 2px;
-	display: inline-block;
-
-}
-
 .container{
 	margin: 50px 0;
 	position: absolute;
@@ -23,6 +15,33 @@ img{
 #sort{
 	margin-bottom: 70px;
 }
+
+.item{
+	display: inline-block;
+	-webkit-transition: all 0.2s ease-in ;
+	-moz-transition: all 0.2s ease-in ;
+	transition: all 0.2s ease-in ;
+}
+.itemImageHolder{
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+}
+#items img{
+	height: auto;
+	width: 100%;
+	display: inline-block;
+	-webkit-transition: all 0.2s ease-in ;
+	-moz-transition: all 0.2s ease-in ;
+	transition: all 0.2s ease-in ;
+}
+.item:hover{
+	opacity: 0.5;
+}
+.item:hover img{
+	transform: scale(1.1);
+}
 .price{
 	position: absolute;
 	right: 10px;
@@ -31,14 +50,10 @@ img{
 	margin-bottom: 50px;
 	font-size: 20px;
 }
-.item{
-	display: inline-block;
-}
 .money{
 	display: relative;
 }
-.transition{
-	-webkit-transition: all .9s ease-in-out;
-	-moz-transition: all .9s ease-in-out;
-	transition: all .9s ease-in-out;
+.hide{
+	opacity: 0;
 }
+
