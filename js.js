@@ -37,6 +37,8 @@ function display(){
 		var description = document.createElement('h2');
 		var priceItem = document.createElement('span');
 		var symbol = document.createElement('span');
+		var cart = document.createElement('i');
+		var overlay = document.createElement('div');
 
 		description.innerHTML= itemsArr[i].name;
 		priceItem.innerHTML= itemsArr[i].price;
@@ -48,6 +50,8 @@ function display(){
 		priceItem.setAttribute('class', 'price');
 		symbol.setAttribute('class', 'money');
 		itemImageHolder.setAttribute('class', 'itemImageHolder');
+		cart.setAttribute('class', 'far fa-plus-square');
+		overlay.setAttribute('class', 'overlay');
 
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
@@ -56,7 +60,8 @@ function display(){
 		itemHolder.appendChild(description);
 		description.appendChild(priceItem);
 		priceItem.appendChild(symbol);
-
+		itemImageHolder.appendChild(cart);
+		itemImageHolder.insertBefore(cart,itemImage);
 		
 		itemHolder.classList.remove("hide");
 		itemHolder.classList.add("appear");
