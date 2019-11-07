@@ -25,7 +25,35 @@ var itemsArr=[
 	{img:"img/008.jpg", name:"Food", price:2, day: 8}
 ];
 
-var startSorting = false;
+itemBought =[];
+var boughtValue=itemBought.length;
+var boughtDisplay= document.querySelector('#bought');
+var boughtDisplayMobile= document.querySelector('#boughtMobile');
+boughtDisplay.innerHTML=boughtValue;
+
+
+//---------------------Cart-bought items number---------------------//
+
+
+
+
+function boughtFunction(){
+
+	// take number of elements in the array
+	var clicked = this.getAttribute('data-number');
+
+	itemBought.push(itemsArr[clicked]);
+	console.log(itemBought);
+
+	var boughtValue=itemBought.length;
+	var boughtDisplay= document.querySelector('#bought');
+	var boughtDisplayMobile= document.querySelector('#boughtMobile');
+	boughtDisplay.innerHTML=boughtValue;
+
+	}
+
+//---------------------Display Items--------------------------//
+
 
 function display(){
 	
@@ -36,23 +64,24 @@ function display(){
 		var itemImage = document.createElement("img");
 		var description = document.createElement('span');
 		var priceItem = document.createElement('span');
-		var symbol = document.createElement('span');
-		var cart = document.createElement('i');
+		var bought = document.createElement('i');
 		var info = document.createElement('div');
 
 
 		description.innerHTML= itemsArr[i].name;
 		priceItem.innerHTML= "&#36;" + itemsArr[i].price;
 
+
 		itemImage.setAttribute('src', itemsArr[i].img);
 
-		itemHolder.setAttribute('class', "col-md-3 col-sm-6 col-xs-12 item hide");
+		itemHolder.setAttribute('class', "col-lg-3 col-md-4 col-sm-6 col-xs-12 item hide");
 		priceItem.setAttribute('class', 'price');
-		symbol.setAttribute('class', 'money');
 		itemImageHolder.setAttribute('class', 'itemImageHolder');
-		cart.setAttribute('class', 'far fa-plus-square');
+		bought.setAttribute('class', 'far fa-plus-square');
 		info.setAttribute('class', 'info');
 
+		 //get the number of all elements in the array
+		 bought.setAttribute('data-number', i);
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
 		itemHolder.appendChild(itemImageHolder);
@@ -61,15 +90,18 @@ function display(){
 		itemHolder.appendChild(info)
 		info.appendChild(description);
 		info.appendChild(priceItem);
-		itemImageHolder.appendChild(cart);
-		itemImageHolder.insertBefore(cart,itemImage);
+		itemImageHolder.appendChild(bought);
+		itemImageHolder.insertBefore(bought,itemImage);
 
 		
 		itemHolder.classList.remove("hide");
 		itemHolder.classList.add("appear");
-
-		}
+		
+		bought.addEventListener('click', boughtFunction);
 	}
+		
+		
+}
 
 
 
@@ -80,32 +112,27 @@ display();
 
 
 function sort(){
-	console.log("on");
 	var ivalue= document.querySelector("#sort").value;
 	let sortOrder = itemsArr.sort(function(a,b){
 		switch (ivalue){
 
 		 case "az":
-			console.log ('a to z');
 			if (a.name > b.name) return 1;
 			else if (b.name>a.name) return -1;
 			return 0;
 			break;
 
 		case "za":
-			console.log ('z to a');
 			if (b.name > a.name) return 1;
 			else if (a.name>b.name) return -1;
 			return 0;
 			break;
 
 		case "low":
-			console.log ('low');
 			return a.price-b.price;
 			break;
 
 		case "high":
-			console.log ('low');
 			return b.price-a.price;
 			break;
 
@@ -129,3 +156,7 @@ function deleteOldDisplay(){
 		parent.removeChild(child);
 	}
 }
+
+
+
+
