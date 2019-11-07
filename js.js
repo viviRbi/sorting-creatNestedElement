@@ -34,15 +34,15 @@ function display(){
 		var itemHolder = document.createElement('div');
 		var itemImageHolder = document.createElement("div");
 		var itemImage = document.createElement("img");
-		var description = document.createElement('h2');
+		var description = document.createElement('span');
 		var priceItem = document.createElement('span');
 		var symbol = document.createElement('span');
 		var cart = document.createElement('i');
-		var overlay = document.createElement('div');
+		var info = document.createElement('div');
+
 
 		description.innerHTML= itemsArr[i].name;
-		priceItem.innerHTML= itemsArr[i].price;
-		symbol.innerHTML="&#36;";
+		priceItem.innerHTML= "&#36;" + itemsArr[i].price;
 
 		itemImage.setAttribute('src', itemsArr[i].img);
 
@@ -51,17 +51,19 @@ function display(){
 		symbol.setAttribute('class', 'money');
 		itemImageHolder.setAttribute('class', 'itemImageHolder');
 		cart.setAttribute('class', 'far fa-plus-square');
-		overlay.setAttribute('class', 'overlay');
+		info.setAttribute('class', 'info');
 
 
 		document.querySelector('#itemsDisplay').appendChild(itemHolder);
 		itemHolder.appendChild(itemImageHolder);
 		itemImageHolder.appendChild(itemImage);
 		itemHolder.appendChild(description);
-		description.appendChild(priceItem);
-		priceItem.appendChild(symbol);
+		itemHolder.appendChild(info)
+		info.appendChild(description);
+		info.appendChild(priceItem);
 		itemImageHolder.appendChild(cart);
 		itemImageHolder.insertBefore(cart,itemImage);
+
 		
 		itemHolder.classList.remove("hide");
 		itemHolder.classList.add("appear");
