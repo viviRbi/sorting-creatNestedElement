@@ -1,3 +1,17 @@
+
+@media (max-width: 767px){
+	#items .fa-plus-square{
+	position: absolute;
+	z-index: 999;
+	top: -3px;
+	right: -3px;
+	width: 47px;
+	height: 50px;
+	font-size: 50px;
+	padding: 0;
+	margin: 0;
+}
+
 @media (max-width: 575px){
 
 	#item .container .row{
@@ -15,20 +29,11 @@
 		padding: 10px;
 		margin-top: 8px;
 	}
-	.bought{
-		max-width: 20px;
-		max-height: 20px;
-		font-size: 12px;
-		right: 5px;
-		bottom: 5px;
-		vertical-align: middle;
-		line-height: 20px;
-	}
 	.log-cart i:firstchild{
 		width: 30px;
 		height: auto;
 	}
-}
+
 
 @media (max-width: 290px){
 	.log-cart{
@@ -41,7 +46,7 @@
 		display: block;
 		margin: 10px 0;
 		height: 50px;
-		font: 50px;
+		width: 100%;
 		padding: 10px;
 	}
 	.superSmall, .sort{
@@ -50,4 +55,23 @@
 
 	.superSmall v-r{
 		padding: 0 10px;
+	}
+	#boughtMobile{
+		font-size: 25px;
+		right: 5px;
+		bottom: 5px;
+		vertical-align: middle;
+		line-height: 25px;
+		width: 50px;
+		background-color: orange;
+		position: relative;
+		z-index: 999;
+		color: white;
+		border-radius: 50%;
+		overflow: auto;
+	}
+	.superSmall i {
+		width: 50px;
+		height: 50px;
+		font-size: 25px;
 	}

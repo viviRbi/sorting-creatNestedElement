@@ -12,6 +12,8 @@
 //  }
 
 
+console.log('udate');
+
 //---------------------Nested Element--------------------------//
 
 var itemsArr=[
@@ -25,7 +27,7 @@ var itemsArr=[
 	{img:"img/008.jpg", name:"Food", price:2, day: 8}
 ];
 
-itemBought =[];
+var itemBought =[];
 var boughtValue=itemBought.length;
 var boughtDisplay= document.querySelector('#bought');
 var boughtDisplayMobile= document.querySelector('#boughtMobile');
