@@ -28,10 +28,6 @@ var itemsArr=[
 ];
 
 var itemBought =[];
-var boughtValue=itemBought.length;
-var boughtDisplay= document.querySelector('#bought');
-var boughtDisplayMobile= document.querySelector('#boughtMobile');
-boughtDisplay.innerHTML=boughtValue;
 
 
 //---------------------Cart-bought items number---------------------//
@@ -51,6 +47,7 @@ function boughtFunction(){
 	var boughtDisplay= document.querySelector('#bought');
 	var boughtDisplayMobile= document.querySelector('#boughtMobile');
 	boughtDisplay.innerHTML=boughtValue;
+	boughtDisplayMobile.innerHTML=boughtValue;
 
 	}
 
