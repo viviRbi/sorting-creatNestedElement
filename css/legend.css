@@ -156,7 +156,7 @@ html, body{
 		width: 100%;
 		height: 100%;
 		background: rgba(255,255,255,0.5);
-		z-index: 9990;
+		z-index: 9980;
 		display: none;
 	}
 
@@ -258,7 +258,7 @@ html, body{
 			text-align: center;
 			font-weight: 600;
 		}
-		#popUpList .minusPlus{
+		#popUpList .container i{
 			width:30px;
 			font-size :20px;
 			height: 30px;

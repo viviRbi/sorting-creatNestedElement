@@ -186,8 +186,8 @@ function popUp(){
 		popUpImage.setAttribute('class', 'popUpImage');
 		popUpImage.setAttribute('src', itemBought[i].img);
 
-		plus.setAttribute('class', 'fas fa-plus');
-		minus.setAttribute('class', 'fas fa-minus');
+		plus.setAttribute('class', 'fas fa-plus .minusPlus');
+		minus.setAttribute('class', 'fas fa-minus .minusPlus');
 
 		document.querySelector("#popUpList").appendChild(wrapper);
 		wrapper.appendChild(row);
@@ -204,6 +204,8 @@ function popUp(){
 
 		popUpPrice.innerHTML=itemBought[i].price;
 		input.value=1;
+
+
 	}
 }
 
