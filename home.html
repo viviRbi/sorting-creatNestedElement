@@ -35,6 +35,8 @@ crossorigin="anonymous">
 	<!-- Main -->
 	<main>
 		<section id="items">
+
+
 			<div class="container">
 				<div class="col-md-6 col-sm-6 col-xs-6 superSmall">
 					<div><span><i class="fas fa-cart-arrow-down"><span id ="boughtMobile">0</span></i></span><v-r></v-r><span><i class="fas fa-user-alt"></i></span></div>
@@ -51,7 +53,7 @@ crossorigin="anonymous">
 					</div>
 
 					<div class="col-md-6 col-sm-6 col-xs-6 log-cart">
-						<div><span><i class="fas fa-cart-arrow-down"><span id ="bought">0</span></i></span><v-r></v-r><span><i class="fas fa-user-alt"></i></span></div>
+						<div><span><i class="fas fa-cart-arrow-down" id="cart"><span id ="bought">0</span></i></span><v-r></v-r><span><i class="fas fa-user-alt"></i></span></div>
 						
 					</div>
 				</div>
@@ -59,7 +61,49 @@ crossorigin="anonymous">
 				<div class="row" id="itemsDisplay"></div>
 			</div>
 		</section>
+
+
 	</main>
+
+	<div id="popUpOverlay">
+
+		<div id="popUpCart" >
+
+			<div class="container">
+
+				<section>
+					<h1>Item Name<span id ="popUpQuit" class="fas fa-plus transition"></span></h1>
+					<hr>
+				</section>
+
+				<section id ="popUpList">
+
+				<!-- 	<div class='wrapper'>
+						<div class="row">
+
+							<div class="container ">
+
+								<div class="popUpInfo">
+									<div class="popUpImage"><span>&#36;2</span></div>
+								</div>
+
+								<div class="popUpCount">
+									<i class="fas fa-minus minusPlus" ></i>
+									<input type="text" name="number">
+									<i class="fas fa-plus minusPlus"></i>
+								</div>	
+
+							</div>
+						</div>
+					</div> -->
+
+				</section>
+
+
+			</div>
+		</div>
+	</div>
+
 
 	<!-- Footer -->
 	<footer>

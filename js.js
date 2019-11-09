@@ -12,8 +12,6 @@
 //  }
 
 
-console.log('udate');
-
 //---------------------Nested Element--------------------------//
 
 var itemsArr=[
@@ -146,7 +144,7 @@ function sort(){
 }
 
 
-//---------------------Remove-----------------------------------------//
+//---------------------Remove-----------------------------//
 
 function deleteOldDisplay(){
 	for (var i=0; i<itemsArr.length; i++){
@@ -156,6 +154,56 @@ function deleteOldDisplay(){
 	}
 }
 
+//---------------------Cart Pop Up-----------------------------//
 
+document.querySelector("#cart").addEventListener('click', popUp);
 
+document.querySelector("#popUpQuit").addEventListener('click', function(){
+	document.querySelector("#popUpOverlay").classList.remove('active');
+});
+
+function popUp(){
+	document.querySelector("#popUpOverlay").classList.add('active');
+	for (var i=0; i<itemBought.length; i++){
+
+		var wrapper=document.createElement('div');
+		var row=document.createElement('div');
+		var itemList=document.createElement('div');
+
+		var popUpInfo=document.createElement('div');
+		var popUpImage=document.createElement('img');
+		var popUpPrice=document.createElement('span');
+
+		var popUpCount=document.createElement('div');
+		var plus=document.createElement('i');
+		var input=document.createElement('input');
+		var minus=document.createElement('i');
+
+		wrapper.setAttribute('class', 'wrapper');
+		row.setAttribute('class', 'row');
+		itemList.setAttribute('class', 'container');
+
+		popUpImage.setAttribute('class', 'popUpImage');
+		popUpImage.setAttribute('src', itemBought[i].img);
+
+		plus.setAttribute('class', 'fas fa-plus');
+		minus.setAttribute('class', 'fas fa-minus');
+
+		document.querySelector("#popUpList").appendChild(wrapper);
+		wrapper.appendChild(row);
+		row.appendChild(itemList);
+		itemList.appendChild(popUpInfo);
+		itemList.appendChild(popUpCount);
+
+		popUpInfo.appendChild(popUpImage);
+		popUpImage.appendChild(popUpPrice);
+
+		popUpCount.appendChild(plus);
+		popUpCount.appendChild(input);
+		popUpCount.appendChild(minus);
+
+		popUpPrice.innerHTML=itemBought[i].price;
+		input.value=1;
+	}
+}
 
