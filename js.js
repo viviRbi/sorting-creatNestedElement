@@ -160,6 +160,10 @@ document.querySelector("#cart").addEventListener('click', popUp);
 
 document.querySelector("#popUpQuit").addEventListener('click', function(){
 	document.querySelector("#popUpOverlay").classList.remove('active');
+	for (var i=0; i<itemBought.length; i++){
+		
+			document.getElementsByClassName('.wrapper').style.display="none";
+		}
 });
 
 function popUp(){
@@ -204,8 +208,6 @@ function popUp(){
 
 		popUpPrice.innerHTML=itemBought[i].price;
 		input.value=1;
-
-
 	}
 }
 
