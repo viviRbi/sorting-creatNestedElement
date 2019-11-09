@@ -162,7 +162,7 @@ document.querySelector("#popUpQuit").addEventListener('click', function(){
 	document.querySelector("#popUpOverlay").classList.remove('active');
 	for (var i=0; i<itemBought.length; i++){
 		
-			document.getElementsByClassName('.wrapper').style.display="none";
+			document.querySelector('.wrapper').style.display= "none";
 		}
 });
 
