@@ -37,10 +37,10 @@ var itemBought =[];
 function boughtFunction(){
 
 	// take number of elements in the array
-	var clickedButton = this.getAttribute('data-number');
+	var clickedDataNumber = this.getAttribute('data-number');
 	var removedPlusButton = this;
 
-	itemBought.push(itemsArr[clickedButton]);
+	itemBought.push(itemsArr[clickedDataNumber]);
 
 	var boughtDisplay= document.querySelector('#bought');
 	var boughtDisplayMobile= document.querySelector('#boughtMobile');
@@ -52,7 +52,7 @@ function boughtFunction(){
 	boughtDisplay.innerHTML=boughtValue;
 	boughtDisplayMobile.innerHTML=boughtValue;
 
-	cartImg= document.getElementsByTagName('img');
+	console.log(itemBought);
 
 	removedPlusButton.classList.remove('fa-plus-square');
 
@@ -251,12 +251,12 @@ function removeBoughtItem(event){
 	// var button = document.createElement('i');
 
 
-	var clickedButton = this.getAttribute('data-number');
+	var clickedDataNumber = this.getAttribute('data-number');
 
+	var button = document.querySelectorAll('.far');
+	console.log(button);
 
-	// var button = document.querySelectorAll('.far');
-
-	itemBought.pop(itemsArr[clickedButton]);
+	itemBought.pop(itemsArr[clickedDataNumber]);
 	console.log(itemBought);
 
 	var boughtDisplay= document.querySelector('#bought');
@@ -270,4 +270,6 @@ function removeBoughtItem(event){
 	boughtDisplayMobile.innerHTML=boughtValue;
 
 	// removedPlusButton.classList.add('fa-plus-square');
+	for (var i=0; i<button.length; i++){
+		button[clickedDataNumber].classList.add('fa-plus-square');}
 }
