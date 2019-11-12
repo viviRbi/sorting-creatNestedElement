@@ -15,17 +15,18 @@
 //---------------------Nested Element--------------------------//
 
 var itemsArr=[
-	{img:"img/001.jpg", name:"Bottle", price:25, day: 1},
-	{img:"img/002.jpg", name:"Helmet", price:50, day: 2},
-	{img:"img/003.jpg", name:"Frames", price:4, day: 3},
-	{img:"img/004.jpg", name:"Milk", price:3, day: 4},
-	{img:"img/005.jpg", name:"Watches", price:100, day: 5},
-	{img:"img/006.jpg", name:"Vase", price:70, day: 6},
-	{img:"img/007.jpg", name:"Box", price:6, day: 7},
-	{img:"img/008.jpg", name:"Food", price:2, day: 8}
+	{img:"img/001.jpg", name:"Bottle", price:25, day: 1, max: 3},
+	{img:"img/002.jpg", name:"Helmet", price:50, day: 2, max: 5},
+	{img:"img/003.jpg", name:"Frames", price:4, day: 3, max: 3},
+	{img:"img/004.jpg", name:"Milk", price:3, day: 4, max: 2},
+	{img:"img/005.jpg", name:"Watches", price:100, day: 5, max: 3},
+	{img:"img/006.jpg", name:"Vase", price:70, day: 6, max: 6},
+	{img:"img/007.jpg", name:"Box", price:6, day: 7, max: 2},
+	{img:"img/008.jpg", name:"Food", price:2, day: 8, max: 1}
 ];
 
 var itemBought =[];
+
 
 
 //---------------------Cart-bought items number---------------------//
@@ -36,16 +37,24 @@ var itemBought =[];
 function boughtFunction(){
 
 	// take number of elements in the array
-	var clicked = this.getAttribute('data-number');
+	var clickedButton = this.getAttribute('data-number');
+	var removedPlusButton = this;
 
-	itemBought.push(itemsArr[clicked]);
-	console.log(itemBought);
+	itemBought.push(itemsArr[clickedButton]);
 
-	var boughtValue=itemBought.length;
 	var boughtDisplay= document.querySelector('#bought');
 	var boughtDisplayMobile= document.querySelector('#boughtMobile');
+
+       // Display number of Item bought
+
+	var boughtValue=itemBought.length;
+
 	boughtDisplay.innerHTML=boughtValue;
 	boughtDisplayMobile.innerHTML=boughtValue;
+
+	cartImg= document.getElementsByTagName('img');
+
+	removedPlusButton.classList.remove('fa-plus-square');
 
 	}
 
@@ -95,6 +104,7 @@ function display(){
 		itemHolder.classList.add("appear");
 		
 		bought.addEventListener('click', boughtFunction);
+
 	}
 		
 		
@@ -154,17 +164,22 @@ function deleteOldDisplay(){
 	}
 }
 
+//---------------------Cart Remove/ inside remove --------------------//
+
+
+document.querySelector("#popUpQuit").addEventListener('click', function(){
+
+	document.getElementById("popUpOverlay").classList.remove('active');
+
+	var wrapper=document.querySelectorAll('.wrapper');
+	for (i=0; i<itemBought.length; i++){
+	wrapper[i].remove();}
+	});
+
+
 //---------------------Cart Pop Up-----------------------------//
 
 document.querySelector("#cart").addEventListener('click', popUp);
-
-document.querySelector("#popUpQuit").addEventListener('click', function(){
-	document.querySelector("#popUpOverlay").classList.remove('active');
-	for (var i=0; i<itemBought.length; i++){
-		
-			document.querySelector('.wrapper').style.display= "none";
-		}
-});
 
 function popUp(){
 	document.querySelector("#popUpOverlay").classList.add('active');
@@ -179,9 +194,9 @@ function popUp(){
 		var popUpPrice=document.createElement('span');
 
 		var popUpCount=document.createElement('div');
-		var plus=document.createElement('i');
+		
 		var input=document.createElement('input');
-		var minus=document.createElement('i');
+		var trash=document.createElement('i');
 
 		wrapper.setAttribute('class', 'wrapper');
 		row.setAttribute('class', 'row');
@@ -190,8 +205,10 @@ function popUp(){
 		popUpImage.setAttribute('class', 'popUpImage');
 		popUpImage.setAttribute('src', itemBought[i].img);
 
-		plus.setAttribute('class', 'fas fa-plus .minusPlus');
-		minus.setAttribute('class', 'fas fa-minus .minusPlus');
+		input.setAttribute('type', 'number');
+		input.setAttribute('value', '1');
+		
+		trash.setAttribute('class', 'fas fa-trash transition');
 
 		document.querySelector("#popUpList").appendChild(wrapper);
 		wrapper.appendChild(row);
@@ -202,12 +219,55 @@ function popUp(){
 		popUpInfo.appendChild(popUpImage);
 		popUpImage.appendChild(popUpPrice);
 
-		popUpCount.appendChild(plus);
 		popUpCount.appendChild(input);
-		popUpCount.appendChild(minus);
+		popUpCount.appendChild(trash);
 
 		popUpPrice.innerHTML=itemBought[i].price;
-		input.value=1;
+
+		input.addEventListener('change', quantityChanged);
+		trash.addEventListener('click',  removeBoughtItem);
+	}
+
+}
+
+//---------------------Quantities-----------------------------//
+
+function quantityChanged(event){
+	var inputN = event.target;
+	if (isNaN(inputN.value)|| inputN.value <=0){
+		inputN.value =1;
 	}
 }
 
+
+//---------------------Remove-----------------------------//
+
+
+function removeBoughtItem(event){
+	var remove = event.target;
+	remove.parentElement.parentElement.parentElement.parentElement.remove();
+
+	// var itemImageHolder = document.querySelector('itemImageHolder');
+	// var button = document.createElement('i');
+
+
+	var clickedButton = this.getAttribute('data-number');
+
+
+	// var button = document.querySelectorAll('.far');
+
+	itemBought.pop(itemsArr[clickedButton]);
+	console.log(itemBought);
+
+	var boughtDisplay= document.querySelector('#bought');
+	var boughtDisplayMobile= document.querySelector('#boughtMobile');
+
+       // Display number of Item bought
+
+	var boughtValue=itemBought.length;
+
+	boughtDisplay.innerHTML=boughtValue;
+	boughtDisplayMobile.innerHTML=boughtValue;
+
+	// removedPlusButton.classList.add('fa-plus-square');
+}
