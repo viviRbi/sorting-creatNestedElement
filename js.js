@@ -270,6 +270,7 @@ function removeBoughtItem(event){
 	boughtDisplayMobile.innerHTML=boughtValue;
 
 	// removedPlusButton.classList.add('fa-plus-square');
-	for (var i=0; i<button.length; i++){
-		button[clickedDataNumber].classList.add('fa-plus-square');}
+	
+	// for (var i=0; i<button.length; i++){
+	// 	button[clickedDataNumber].classList.add('fa-plus-square');}
 }
